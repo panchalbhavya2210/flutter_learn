@@ -1,64 +1,55 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(
-    const MaterialApp(
-      title: 'Flutter Tutorial',
-      home: TutorialHome(),
-    ),
-  );
-}
+void main() => runApp(const MyApp());
 
-// class TutorialHome extends StatelessWidget {
-//   const TutorialHome({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     // Scaffold is a layout for
-//     // the major Material Components.
-//     return Scaffold(
-//       appBar: AppBar(
-//         leading: const IconButton(
-//           icon: Icon(Icons.menu),
-//           tooltip: 'Navigation menu',
-//           onPressed: null,
-//         ),
-//         title: const Text('My First App'),
-//         actions: const [
-//           IconButton(
-//             icon: Icon(Icons.search),
-//             tooltip: 'Search',
-//             onPressed: null,
-//           ),
-//         ],
-//       ),
-//       // body is the majority of the screen.
-//       body: const Center(
-//         child: Text('Hello, world! Bhavya Panchal'),
-//       ),
-//       floatingActionButton: const FloatingActionButton(
-//         tooltip: 'Add', // used by assistive technologies
-//         onPressed: null,
-//         child: Icon(Icons.access_time_filled),
-//       ),
-//     );
-//   }
-// }
-
-class TutorialHome extends StatelessWidget {
-  const TutorialHome({super.key});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: const IconButton(onPressed: null, icon: Icon(Icons.menu)),
-        title: const Text('Flutter Tutorial'),
-        centerTitle: true,
-        shadowColor: Colors.black,
-        elevation: double.parse('2.0'),
+    const String appTitle = "Flutter Gallery";
+    return MaterialApp(
+      title: appTitle,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text(appTitle),
+        ),
+        body: const SingleChildScrollView(
+          child: Column(
+            children: [TitleSection(name: "hello", location: "hello")],
+          ),
+        ),
       ),
-      body: const Column(
-        children: [Text("hello world")],
+    );
+  }
+}
+
+class TitleSection extends StatelessWidget {
+  const TitleSection({super.key, required this.name, required this.location});
+
+  final String name;
+  final String location;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(32),
+      child: Row(
+        children: [
+          Expanded(
+              child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Text(
+                  name,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              )
+            ],
+          ))
+        ],
       ),
     );
   }
