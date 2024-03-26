@@ -1,52 +1,66 @@
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    const String title = "Button Tap";
-
+    const String apptitle = "Form Creation";
     return MaterialApp(
-      title: title,
-      home: MyHomePg(title: title),
+      title: apptitle,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text(apptitle),
+        ),
+        body: const MyForm(),
+      ),
     );
   }
 }
 
-class MyHomePg extends StatelessWidget {
-  final String title;
-  const MyHomePg({super.key, required this.title});
+class MyForm extends StatefulWidget {
+  const MyForm({super.key});
+
+  @override
+  State<MyForm> createState() => _MyCstForm();
+}
+
+class _MyCstForm extends State<MyForm> {
+  final myCnt = TextEditingController();
+
+  @override
+  void dispose() {
+    myCnt.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: const Text("Filed"),
       ),
-      body: MyBtn(),
-    );
-  }
-}
-
-class MyBtn extends StatelessWidget {
-  const MyBtn({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        const snack = SnackBar(content: Text("I was tapped"));
-
-        ScaffoldMessenger.of(context).showSnackBar(snack);
-      },
-      child: Container(
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-            color: Colors.blue[300], borderRadius: BorderRadius.circular(8)),
-        child: const Text('Tap ME'),
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: TextField(
+          autocorrect: true,
+          controller: myCnt,
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  content: Text(myCnt.text),
+                );
+              });
+        },
+        tooltip: 'Show Me Value',
+        child: const Icon(Icons.text_fields),
       ),
     );
   }
