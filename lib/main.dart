@@ -1,66 +1,98 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    const String apptitle = "Form Creation";
-    return MaterialApp(
-      title: apptitle,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(apptitle),
-        ),
-        body: const MyForm(),
+void main() {
+  runApp(
+    MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
-    );
-  }
+      home: ColumnLayoutScreen(),
+    ),
+  );
 }
 
-class MyForm extends StatefulWidget {
-  const MyForm({super.key});
-
-  @override
-  State<MyForm> createState() => _MyCstForm();
-}
-
-class _MyCstForm extends State<MyForm> {
-  final myCnt = TextEditingController();
-
-  @override
-  void dispose() {
-    myCnt.dispose();
-    super.dispose();
-  }
-
+class ColumnLayoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Filed"),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(16),
-        child: TextField(
-          autocorrect: true,
-          controller: myCnt,
+        appBar: AppBar(
+          // The title text which will be shown on the action bar
+          title: const Text("My Flutter App"),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showDialog(
-              context: context,
-              builder: (context) {
-                return AlertDialog(
-                  content: Text(myCnt.text),
-                );
-              });
-        },
-        tooltip: 'Show Me Value',
-        child: const Icon(Icons.text_fields),
+        body: Padding(
+          padding: const EdgeInsets.only(left: 20, right: 20),
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(bottom: 10),
+                    width: double.infinity,
+                    child:
+                        CustomCard(title: "Ocean", imgUrl: "images/lake.jpg"),
+                  ),
+                  // Container(
+                  //   margin: EdgeInsets.only(bottom: 10),
+                  //   width: double.infinity,
+                  //   child: CustomCard(title: 'title'),
+                  // ),
+                  // Container(
+                  //   margin: EdgeInsets.only(bottom: 10),
+                  //   width: double.infinity,
+                  //   child: CustomCard(title: 'title'),
+                  // ),
+                  // Container(
+                  //   margin: EdgeInsets.only(bottom: 10),
+                  //   width: double.infinity,
+                  //   child: CustomCard(title: 'title'),
+                  // ),
+                ],
+              ),
+            ),
+          ),
+        ));
+  }
+}
+
+class CustomCard extends StatelessWidget {
+  const CustomCard({super.key, required this.title, required this.imgUrl});
+
+  final String title;
+  final String imgUrl;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      color: Colors.amber,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: double.infinity,
+            child: Image.asset(imgUrl),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 26,
+                  ),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(right: 8),
+                child: Icon(Icons.arrow_circle_right_outlined),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
