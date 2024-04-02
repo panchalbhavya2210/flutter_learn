@@ -14,6 +14,7 @@ void main() {
 }
 
 class ColumnLayoutScreen extends StatelessWidget {
+  const ColumnLayoutScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,54 +23,17 @@ class ColumnLayoutScreen extends StatelessWidget {
           title: const Text("My Flutter App"),
         ),
         body: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20),
-          child: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(bottom: 10),
-                    width: double.infinity,
-                    child: const CustomCard(
-                        title: "Python Programming", imgUrl: "images/lake.jpg"),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 10),
-                    width: double.infinity,
-                    child: const CustomCard(
-                        title: "Artificial Intelligence",
-                        imgUrl: "images/lake.jpg"),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 10),
-                    width: double.infinity,
-                    child: CustomCard(title: "PHP", imgUrl: "images/lake.jpg"),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 10),
-                    width: double.infinity,
-                    child: CustomCard(title: "FGK", imgUrl: "images/lake.jpg"),
-                  ),
-                  // Container(
-                  //   margin: EdgeInsets.only(bottom: 10),
-                  //   width: double.infinity,
-                  //   child: CustomCard(title: 'title'),
-                  // ),
-                  // Container(
-                  //   margin: EdgeInsets.only(bottom: 10),
-                  //   width: double.infinity,
-                  //   child: CustomCard(title: 'title'),
-                  // ),
-                  // Container(
-                  //   margin: EdgeInsets.only(bottom: 10),
-                  //   width: double.infinity,
-                  //   child: CustomCard(title: 'title'),
-                  // ),
-                ],
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            child: Center(
+              child: ElevatedButton(
+                child: const Text('go sem6'),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CardDisplay()));
+                },
               ),
-            ),
-          ),
-        ));
+            )));
   }
 }
