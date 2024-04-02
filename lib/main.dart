@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/semester/sem6.dart';
 
 void main() {
   runApp(
@@ -30,8 +31,25 @@ class ColumnLayoutScreen extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(bottom: 10),
                     width: double.infinity,
-                    child:
-                        CustomCard(title: "Ocean", imgUrl: "images/lake.jpg"),
+                    child: const CustomCard(
+                        title: "Python Programming", imgUrl: "images/lake.jpg"),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 10),
+                    width: double.infinity,
+                    child: const CustomCard(
+                        title: "Artificial Intelligence",
+                        imgUrl: "images/lake.jpg"),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 10),
+                    width: double.infinity,
+                    child: CustomCard(title: "PHP", imgUrl: "images/lake.jpg"),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 10),
+                    width: double.infinity,
+                    child: CustomCard(title: "FGK", imgUrl: "images/lake.jpg"),
                   ),
                   // Container(
                   //   margin: EdgeInsets.only(bottom: 10),
@@ -53,47 +71,5 @@ class ColumnLayoutScreen extends StatelessWidget {
             ),
           ),
         ));
-  }
-}
-
-class CustomCard extends StatelessWidget {
-  const CustomCard({super.key, required this.title, required this.imgUrl});
-
-  final String title;
-  final String imgUrl;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      clipBehavior: Clip.antiAlias,
-      color: Colors.amber,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            width: double.infinity,
-            child: Image.asset(imgUrl),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 26,
-                  ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(right: 8),
-                child: Icon(Icons.arrow_circle_right_outlined),
-              ),
-            ],
-          )
-        ],
-      ),
-    );
   }
 }
