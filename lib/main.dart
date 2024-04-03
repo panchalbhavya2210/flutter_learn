@@ -5,9 +5,7 @@ void main() {
   runApp(
     MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(primarySwatch: Colors.red, fontFamily: 'DMSans'),
       home: ColumnLayoutScreen(),
     ),
   );
@@ -18,22 +16,56 @@ class ColumnLayoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          // The title text which will be shown on the action bar
-          title: const Text("My Flutter App"),
-        ),
-        body: Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
-            child: Center(
-              child: ElevatedButton(
-                child: const Text('go sem6'),
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const CardDisplay()));
-                },
+      appBar: AppBar(
+        title: const Text("My Flutter App"),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20, right: 20),
+          child: Column(
+            children: [
+              SizedBox(
+                width: double.infinity,
+                height: 200,
+                child: Container(
+                  alignment: Alignment.bottomLeft,
+                  decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(0),
+                          topRight: Radius.circular(0),
+                          bottomLeft: Radius.circular(10),
+                          bottomRight: Radius.circular(10)),
+                      color: Colors.cyan),
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      "BCA Assignments",
+                      style: TextStyle(fontSize: 35),
+                    ),
+                  ),
+                ),
               ),
-            )));
+              SemCards()
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class SemCards extends StatelessWidget {
+  const SemCards({Key? key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: List.generate(
+        4,
+        (index) => ListTile(
+          leading: Icon(Icons.abc),
+        ),
+      ),
+    );
   }
 }
