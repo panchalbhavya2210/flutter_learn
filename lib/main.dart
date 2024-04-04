@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/semester/sem4.dart';
+import 'package:hello_world/semester/sem5.dart';
 import 'package:hello_world/semester/sem6.dart';
 
 void main() {
   runApp(
     MaterialApp(
+      initialRoute: '/',
+      routes: {
+        // '/': (context) => const ColumnLayoutScreen(),
+        '/sem4': (context) => const CardDisplayFour(),
+        '/sem5': (context) => const CardDisplayFive(),
+        '/sem6': (context) => const CardDisplay()
+      },
       title: 'Flutter Demo',
       theme: ThemeData(primarySwatch: Colors.red, fontFamily: 'DMSans'),
       home: ColumnLayoutScreen(),
@@ -21,7 +30,7 @@ class ColumnLayoutScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20),
+          padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
           child: Column(
             children: [
               SizedBox(
@@ -31,8 +40,8 @@ class ColumnLayoutScreen extends StatelessWidget {
                   alignment: Alignment.bottomLeft,
                   decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(0),
-                          topRight: Radius.circular(0),
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10),
                           bottomLeft: Radius.circular(10),
                           bottomRight: Radius.circular(10)),
                       color: Colors.cyan),
@@ -45,7 +54,18 @@ class ColumnLayoutScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SemCards()
+              const SemCards(
+                  semName: "Semseter 4",
+                  semIcon: Icon(Icons.book),
+                  semTap: '/sem4'),
+              const SemCards(
+                  semName: "Semester 5",
+                  semIcon: Icon(Icons.book),
+                  semTap: '/sem5'),
+              const SemCards(
+                  semName: "Semester 6",
+                  semIcon: Icon(Icons.book),
+                  semTap: '/sem6')
             ],
           ),
         ),
@@ -55,15 +75,31 @@ class ColumnLayoutScreen extends StatelessWidget {
 }
 
 class SemCards extends StatelessWidget {
-  const SemCards({Key? key});
+  const SemCards(
+      {super.key,
+      required this.semName,
+      required this.semIcon,
+      required this.semTap});
+
+  final String semName;
+  final Icon semIcon;
+  final String semTap;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: List.generate(
-        4,
-        (index) => ListTile(
-          leading: Icon(Icons.abc),
+    return Container(
+      margin: EdgeInsets.only(top: 20),
+      child: SizedBox(
+        width: double.infinity,
+        child: ListView(
+          shrinkWrap: true,
+          children: [
+            ListTile(
+              leading: semIcon,
+              title: Text(semName),
+              onTap: () => {Navigator.pushNamed(context, semTap)},
+            )
+          ],
         ),
       ),
     );

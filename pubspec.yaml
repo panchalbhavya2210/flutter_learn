@@ -58,6 +58,10 @@ flutter:
   uses-material-design: true
   assets:
     - images/lake.jpg
+    - images/ai.png
+    - images/fgk.png
+    - images/PHP.png
+    - images/py.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

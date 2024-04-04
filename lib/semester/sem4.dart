@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:hello_world/semester/customcard.dart";
 
-class CardDisplay extends StatelessWidget {
-  const CardDisplay({super.key});
+class CardDisplayFour extends StatelessWidget {
+  const CardDisplayFour({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,20 +25,8 @@ class CardDisplay extends StatelessWidget {
                     margin: EdgeInsets.only(bottom: 10),
                     width: double.infinity,
                     child: const CustomCard(
-                      title: "Artificial Intelligence",
-                      imgUrl: "images/ai.png",
-                      fileUrl: [
-                        'https://drive.proton.me/urls/V782QCAD1C#0naJAGtRpmRK',
-                        'https://drive.proton.me/urls/CDY5FQCYTR#cBvOq4HZa8IQ'
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 10),
-                    width: double.infinity,
-                    child: const CustomCard(
-                      title: "Python Programming",
-                      imgUrl: "images/py.png",
+                      title: "Bhayva Programming",
+                      imgUrl: "images/lake.jpg",
                       fileUrl: [
                         'https://drive.proton.me/urls/X9TVGRJ19M#usRkZCUlQP82',
                         'https://drive.proton.me/urls/E1DQ3QW5EM#OvFDymqW22a9'
@@ -49,14 +37,11 @@ class CardDisplay extends StatelessWidget {
                     margin: EdgeInsets.only(bottom: 10),
                     width: double.infinity,
                     child: const CustomCard(
-                      title: "PHP",
-                      imgUrl: "images/PHP.png",
-                      fileUrl: [
-                        'https://drive.proton.me/urls/MBSVK83T94#txrm3WKmd1pJ'
-                      ],
+                      title: "Artificial Intelligence",
+                      imgUrl: "images/lake.jpg",
+                      fileUrl: ['https://proton.me'],
                     ),
                   ),
-
                   // Container(
                   //   margin: EdgeInsets.only(bottom: 10),
                   //   width: double.infinity,

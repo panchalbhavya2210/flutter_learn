@@ -48,10 +48,6 @@ class CustomCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.all(8),
-                  child: Text('${fileUrl.length}'),
-                ),
                 const Padding(
                   padding: EdgeInsets.only(right: 8),
                   child: Icon(Icons.arrow_circle_right_outlined),
